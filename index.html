@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AK — Estudante de Programação Web</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Cursor customizado -->
+  <div id="cursor"></div>
+  <div id="cursor-ring"></div>
+
+  <!-- ══ HEADER ══ -->
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <a href="#" class="header__logo" aria-label="Início"><span>AK</span></a>
+      <nav aria-label="Navegação principal">
+        <ul class="nav__list" id="navList">
+          <li><a href="#sobre" class="nav__link">Sobre</a></li>
+          <li><a href="#projetos" class="nav__link">Projetos</a></li>
+          <li><a href="#contato" class="nav__cta">Contato</a></li>
+        </ul>
+      </nav>
+      <button class="nav__hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ══ HERO SECTION ══ -->
+  <section class="hero">
+    <div class="container">
+      <h1 class="hero__title">Desenvolvendo as<br>interfaces do <span>amanhã.</span></h1>
+      <p class="hero__subtitle">Olá, sou o AK. Estudante de programação focado em construir experiências digitais limpas, rápidas e visualmente impactantes.</p>
+    </div>
+  </section>
+
+  <!-- ══ SEÇÃO SOBRE ══ -->
+  <section id="sobre" class="about">
+    <div class="container about__grid">
+      <div class="about__text">
+        <span class="section-label">Quem sou eu</span>
+        <h2>Movido por código e design.</h2>
+        <p>Atualmente focando meus estudos no ecossistema do desenvolvimento Web (Front-End e Back-End). Gosto de entender como alinhar um design fora da curva com uma performance sólida no navegador.</p>
+        <p>Busco constantemente aprender novas tecnologias e aplicar boas práticas de acessibilidade, semântica e clean code nos meus projetos.</p>
+      </div>
+      <div class="about__skills">
+        <span class="section-label">Tecnologias</span>
+        <div class="skills__tags">
+          <span class="skill-tag">HTML5 & CSS3</span>
+          <span class="skill-tag">JavaScript (ES6+)</span>
+          <span class="skill-tag">Responsive Design</span>
+          <span class="skill-tag">Git & GitHub</span>
+          <span class="skill-tag">UI/UX Mindset</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ SEÇÃO PROJETOS ══ -->
+  <section id="projetos" class="projects">
+    <div class="container">
+      <div class="projects__header">
+        <span class="section-label">Meus Trabalhos</span>
+      </div>
+      <div class="projects__grid">
+        <!-- Projeto 1 -->
+        <article class="project-card">
+          <div class="project-card__top">
+            <h3>E-Commerce Interface</h3>
+            <p>Desenvolvimento da interface de uma loja online com foco em micro-interações fluidas e transições via CSS/JS.</p>
+          </div>
+          <a href="#" class="project-card__link">Ver projeto →</a>
+        </article>
+
+        <!-- Projeto 2 -->
+        <article class="project-card">
+          <div class="project-card__top">
+            <h3>Dashboard UI</h3>
+            <p>Estudo de caso focado no layout adaptável (Mobile-First) e manipulação dinâmica de dados na tela.</p>
+          </div>
+          <a href="#" class="project-card__link">Ver projeto →</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ SEÇÃO CONTATO ══ -->
+  <section id="contato" class="contact">
+    <div class="container contact__inner">
+      <span class="section-label" style="justify-content: center; margin-bottom: 1.5rem;">Vamos conversar?</span>
+      <h2>Tem um projeto em mente?</h2>
+      <p>Estou sempre aberto a novas oportunidades, colaborações ou apenas para trocar uma ideia sobre desenvolvimento web.</p>
+      <a href="mailto:seuemail@exemplo.com" class="contact__btn">Enviar Mensagem</a>
+    </div>
+  </section>
+
+  <!-- ══ RODAPÉ ══ -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2026 AK. Construído do zero usando HTML, CSS e JS.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Cursor personalizado
+    const cursor = document.getElementById('cursor');
+    const ring   = document.getElementById('cursor-ring');
+
+    document.addEventListener('mousemove', e => {
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top  = e.clientY + 'px';
+      setTimeout(() => {
+        ring.style.left = e.clientX + 'px';
+        ring.style.top  = e.clientY + 'px';
+      }, 60);
+    });
+
+    document.querySelectorAll('a, button, .project-card').forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        cursor.style.width  = '20px';
+        cursor.style.height = '20px';
+        ring.style.opacity  = '1';
+      });
+      el.addEventListener('mouseleave', () => {
+        cursor.style.width  = '12px';
+        cursor.style.height = '12px';
+        ring.style.opacity  = '0.5';
+      });
+    });
+
+    // Header scroll
+    const header    = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    // Hamburger menu
+    const hamburger = document.getElementById('hamburger');
+    const navList   = document.getElementById('navList');
+
+    hamburger.addEventListener('click', () => {
+      const open = hamburger.classList.toggle('open');
+      navList.classList.toggle('open', open);
+      hamburger.setAttribute('aria-expanded', open);
+    });
+
+    navList.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        navList.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+      });
+    });
+  </script>
+</body>
+</html>
